@@ -1,0 +1,17 @@
+.products-container{
+    display: flex;
+}
+
+.books-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.book-panel {
+    display: flex;
+    height: 600px;
+    width: 400px;
+    margin: 50px;
+    background-color: rgb(204, 209, 209);
+    border-radius: 20px;
+}

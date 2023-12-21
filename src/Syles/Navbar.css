@@ -1,0 +1,19 @@
+.navbar {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2%;
+    align-items: center;
+}
+
+ul > li {
+    list-style-type: none;
+    font-size: large;
+    color: aliceblue;
+}
+.navbar > ul {
+    display: flex;
+}
+.right-item > li {
+    margin-right: 50px;
+}
