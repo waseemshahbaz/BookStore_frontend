@@ -21,7 +21,14 @@ const ProductsHome = () => {
     <div className="products-container">
       <Sidebar />
       <div className="books-container">
-        <div className="book-panel">{books && books[0].id}</div>
+          {
+            books && books.map(book => {
+              return (<div className="book-panel">
+              {book.title}
+              </div>)
+            })
+          }
+        
       </div>
     </div>
   );

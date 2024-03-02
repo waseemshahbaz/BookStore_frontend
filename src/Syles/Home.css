@@ -50,7 +50,8 @@
   .board-button:hover {
     background-color: #504b4b;
     padding: 20px 60px;
-    border-radius: 15px;
+    border-radius: 15px;  
     transition-duration: 200ms;
     font-size: large;
+    transform: translateY(-2.5px);
   }
