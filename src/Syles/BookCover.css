@@ -1,0 +1,24 @@
+.book-panel {
+  display: flex;
+  height: 540px;
+  width: 340px;
+  margin: 20px;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-cover {
+  background-color: rgb(204, 209, 209);
+  display: flex;
+  width: 340px;
+  height: 540px;
+}
+
+.book-cover:hover {
+  height: 560px;
+  width: 360px;
+  transition-duration: 300ms;
+  box-shadow: 10px 10px 5px lightblue;
+  border-radius: 20px;
+}

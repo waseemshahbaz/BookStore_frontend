@@ -1,8 +1,8 @@
-import "../Syles/Footer.css";
-import instagram from "../Pictures/instagram.png";
-import facebook from "../Pictures/facebook.png";
-import linkedin from "../Pictures/linkedin.png";
-import twitter from "../Pictures/twitter.png";
+import '../Syles/Footer.css';
+import instagram from '../Pictures/instagram.png';
+import facebook from '../Pictures/facebook.png';
+import linkedin from '../Pictures/linkedin.png';
+import twitter from '../Pictures/twitter.png';
 
 const Header = () => {
   return (

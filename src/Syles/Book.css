@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+.book-detail {
+  display: flex;
+  flex-direction: row;
+}
+
+.book-detail-panel {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  background-color: #ffffff;
+}
+
+.book-cover-container {
+  flex: 1;
+  padding: 30px;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-cover-photo {
+  width: 350px;
+  height: 550px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-info-container {
+  flex: 2;
+  padding: 30px;
+  margin: 30px;
+  margin-top: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: #333333;
+}
+
+.book-edit-container {
+  flex: 3;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 80px;
+  margin: 30px;
+  margin-top: 70px;
+  font-family: 'Open Sans', sans-serif;
+  color: #333333;
+  height: auto;
+}
+
+.book-title {
+  font-family: 'Merriweather', serif;
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.book-author {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #16a085;
+}
+
+.book-info-container p {
+  margin-bottom: 12px;
+  font-size: 1.1em;
+}
+
+.book-info-container strong {
+  color: #2980b9;
+}
+
+.book-summary {
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.book-tags {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.book-rating {
+  color: #f39c12;
+}
+
+.book-info-container p:not(.book-summary) {
+  padding-left: 10px;
+  border-left: 3px solid #ecf0f1;
+  margin-bottom: 15px;
+}
+
+.book-info-container p.book-summary {
+  border-left: none;
+  padding-left: 0;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 100px;
+  height: 100px;
+}
+
+.icon-container > .icon {
+  background-color: rgb(235, 230, 230);
+  padding: 10px;
+  margin: 20px;
+  border-radius: 15px;
+  display: flex;
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+}
+
+.icon-container > .icon:hover {
+  background-color: rgb(192, 186, 186);
+  margin: 17.5px;
+  height: 45px;
+  border-radius: 100%;
+  width: 45px;
+  transition-duration: 200ms;
+}
+
+.delete-confirmation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  text-align: center;
+  width: 550px;
+  height: 100px;
+}
+
+.delete-confirmation p {
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+.confirm-button,
+.cancel-button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.confirm-button:hover {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.cancel-button:hover {
+  background-color: #4caf50;
+  color: white;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}

@@ -1,10 +1,10 @@
-import "../Syles/Navbar.css";
+import '../Syles/Navbar.css';
 
 const Navbar = () => {
   return (
     <nav className="navbar">
       <ul className="left-item">
-      <a href="/">Book Store</a>
+        <a href="/">Book Store</a>
       </ul>
       <ul className="right-item">
         <a href="/careers">Shop Now</a>

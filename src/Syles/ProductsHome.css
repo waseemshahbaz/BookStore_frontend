@@ -1,18 +1,43 @@
-.products-container{
-    display: flex;
+.products-container {
+  display: flex;
 }
 
 .books-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
-.book-panel {
-    display: flex;
-    height: 600px;
-    width: 400px;
-    margin: 50px;
-    background-color: rgb(204, 209, 209);
-    border-radius: 20px;
+.add-book-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  height: 150px;
+}
+
+.add-book-container > .add-book-icon {
+  background-color: rgb(235, 230, 230);
+  padding: 10px;
+  margin: 20px;
+  border-radius: 8px;
+  display: flex;
+  height: 80px;
+  width: 80px;
+  justify-content: center;
+  margin-right: 50px;
+}
+
+.add-book-container > .add-book-icon:hover {
+  background-color: rgb(192, 186, 186);
+  margin: 17.5px;
+  margin-right: 50px;
+  height: 70px;
+  border-radius: 30%;
+  width: 70px;
+  transition-duration: 200ms;
 }

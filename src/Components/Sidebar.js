@@ -1,8 +1,8 @@
-import "../Syles/Sidebar.css";
-import Book from "../Pictures/book.png";
-import Genre from "../Pictures/genre.png";
-import Author from "../Pictures/author.png";
-import { Link } from "react-router-dom";
+import '../Syles/Sidebar.css';
+import Book from '../Pictures/book.png';
+import Genre from '../Pictures/genre.png';
+import Author from '../Pictures/author.png';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
