@@ -1,43 +1,102 @@
 .products-container {
   display: flex;
+  height: min-content;
+}
+
+.panel-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
 }
 
 .books-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   height: 100%;
-  width: 100%;
+  width: 1550px;
 }
 
 .add-book-container {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-bottom: 20px;
   height: 150px;
 }
 
-.add-book-container > .add-book-icon {
-  background-color: rgb(235, 230, 230);
+.add-book-container .add-book-icon {
+  background-color: rgb(224, 219, 219);
   padding: 10px;
   margin: 20px;
-  border-radius: 8px;
+  border-radius: 15%;
   display: flex;
-  height: 80px;
-  width: 80px;
+  height: 70px;
+  width: 70px;
   justify-content: center;
   margin-right: 50px;
 }
 
-.add-book-container > .add-book-icon:hover {
+.add-book-container .add-book-icon:hover {
   background-color: rgb(192, 186, 186);
   margin: 17.5px;
-  margin-right: 50px;
-  height: 70px;
+  margin-right: 45px;
+  height: 80px;
   border-radius: 30%;
-  width: 70px;
+  width: 80px;
   transition-duration: 200ms;
+}
+
+.searchbar {
+  margin-bottom: auto;
+  margin-top: auto;
+  margin-left: 50px;
+  height: 43px;
+  background-color: #353b48;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.search_input {
+  color: white;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  caret-color: transparent;
+  line-height: 40px;
+  transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_input {
+  padding: 0 10px;
+  width: 450px;
+  caret-color: red;
+  transition: width 0.4s linear;
+}
+
+.searchbar:hover > .search_icon {
+  background: white;
+  color: #e74c3c;
+}
+
+.search_icon {
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
 }

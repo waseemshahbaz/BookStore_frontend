@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './Components/Home';
 import ProductsHome from './Components/ProductsHome';
 import Book from './Components/Book';
+import EditBook from './Components/EditBook';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route index element={<ProductsHome />}></Route>
       </Route>
       <Route path="/book/:id" element={<Book />}></Route>
+      <Route path="/book/add" element={<Book addBook={true} />}></Route>
     </Routes>
   );
 }

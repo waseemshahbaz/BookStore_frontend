@@ -11,6 +11,9 @@ import { InputAdornment, TextField } from '@mui/material';
 import EditBook from './EditBook';
 
 const Book = (props) => {
+  const [addBook] = useState(props.addBook);
+  console.log('addbook is: ', addBook);
+  console.log('props are: ', props.addBook);
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const [deleteCheck, setDeleteCheck] = useState(false);
@@ -22,13 +25,15 @@ const Book = (props) => {
     book?.ratings?.length;
 
   useEffect(() => {
-    GET_API(GET_BOOK + id)
-      .then((data) => {
-        setBook(data);
-      })
-      .catch((err) => {
-        console.log('Error occured while fetching bOok', err);
-      });
+    if (!addBook) {
+      GET_API(GET_BOOK + id)
+        .then((data) => {
+          setBook(data);
+        })
+        .catch((err) => {
+          console.log('Error occured while fetching bOok', err);
+        });
+    }
   }, []);
 
   function onDeleteIcon() {
@@ -57,7 +62,9 @@ const Book = (props) => {
   return (
     <div className="book-detail">
       <Sidebar />
-      {book ? (
+      {book && editCheck ? (
+        <EditBook bookProps={book} setEditCheck={setEditCheck} />
+      ) : book ? (
         <div className="book-detail-panel">
           <div className="book-cover-container">
             <img
@@ -66,49 +73,52 @@ const Book = (props) => {
               alt={book.title}
             />
           </div>
-          {editCheck ? (
-            <EditBook bookProps={book} setEditCheck={setEditCheck} />
-          ) : (
-            <div className="book-info-container">
-              <div className="icon-container">
-                <img className="icon" src={edit} alt="" onClick={onEditIcon} />
-                <img className="icon" src={bin} alt="" onClick={onDeleteIcon} />
-              </div>
-              <h2 className="book-title">{book.title}</h2>
-              <h3 className="book-author">by {book.author}</h3>
-              <p className="book-genre">
-                <strong>Genre:</strong> {book.genre}
-              </p>
-              <p className="book-publication-year">
-                <strong>Publication Year:</strong> {book.publicationYear}
-              </p>
-              <p className="book-isbn">
-                <strong>ISBN:</strong> {book.isbn}
-              </p>
-              <p className="book-price">
-                <strong>Price:</strong> ${book.price.toFixed(2)}
-              </p>
-              <p className="book-language">
-                <strong>Language:</strong> {book.language}
-              </p>
-              <p className="book-publisher">
-                <strong>Publisher:</strong> {book.publisher}
-              </p>
-              <p className="book-pages">
-                <strong>Number of Pages:</strong> {book.numberOfPages}
-              </p>
-              <p className="book-rating">
-                <strong>Average Rating:</strong> {averageRating.toFixed(1)}
-              </p>
-              <p className="book-summary">
-                <strong>Summary:</strong> {book.summary}
-              </p>
-              <p className="book-tags">
-                <strong>Tags:</strong> {book.tags.join(', ')}
-              </p>
+          <div className="book-info-container">
+            <div className="icon-container">
+              <img className="icon" src={edit} alt="" onClick={onEditIcon} />
+              <img className="icon" src={bin} alt="" onClick={onDeleteIcon} />
             </div>
+            <h2 className="book-title">{book.title}</h2>
+            <h3 className="book-author">by {book.author}</h3>
+            <p className="book-genre">
+              <strong>Genre:</strong> {book.genre}
+            </p>
+            <p className="book-publication-year">
+              <strong>Publication Year:</strong> {book.publicationYear}
+            </p>
+            <p className="book-isbn">
+              <strong>ISBN:</strong> {book.isbn}
+            </p>
+            <p className="book-price">
+              <strong>Price:</strong> ${book.price.toFixed(2)}
+            </p>
+            <p className="book-language">
+              <strong>Language:</strong> {book.language}
+            </p>
+            <p className="book-publisher">
+              <strong>Publisher:</strong> {book.publisher}
+            </p>
+            <p className="book-pages">
+              <strong>Number of Pages:</strong> {book.numberOfPages}
+            </p>
+            <p className="book-rating">
+              <strong>Average Rating:</strong> {averageRating.toFixed(1)}
+            </p>
+            <p className="book-summary">
+              <strong>Summary:</strong> {book.summary}
+            </p>
+            <p className="book-tags">
+              <strong>Tags:</strong> {book.tags?.join(', ')}
+            </p>
+          </div>
           )}
         </div>
+      ) : addBook ? (
+        <EditBook
+          bookProps={book}
+          setEditCheck={setEditCheck}
+          addBook={addBook}
+        />
       ) : (
         <Loading />
       )}
