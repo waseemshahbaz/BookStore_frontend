@@ -9,6 +9,10 @@ import Signup from './Components/Signup';
 import ProtectedRoute from './Components/ProtectedRoute';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
+import GenresHome from './Components/GenresHome';
+import AuthorsHome from './Components/AuthorsHome';
+import AboutUs from './Components/AboutUs';
+import Contact from './Components/Contact';
 
 const MainLayout = ({ children }) => (
   <>
@@ -24,6 +28,10 @@ function App() {
       {/* Auth routes without header/footer */}
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      
+      {/* Public Pages */}
+      <Route path="/about" element={<AboutUs />} />
+      <Route path="/contact" element={<Contact />} />
       
       {/* Protected Routes with header/footer */}
       <Route path="/" element={
@@ -51,6 +59,20 @@ function App() {
         <ProtectedRoute>
           <MainLayout>
             <Book addBook={true} />
+          </MainLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="/products/genres" element={
+        <ProtectedRoute>
+          <MainLayout>
+            <GenresHome />
+          </MainLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="/products/authors" element={
+        <ProtectedRoute>
+          <MainLayout>
+            <AuthorsHome />
           </MainLayout>
         </ProtectedRoute>
       } />

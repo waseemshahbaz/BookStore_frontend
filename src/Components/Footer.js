@@ -44,15 +44,10 @@ const Footer = () => {
   const quickLinks = [
     { text: 'About Us', path: '/about' },
     { text: 'Contact', path: '/contact' },
-    { text: 'Blog', path: '/blog' },
-    { text: 'FAQ', path: '/faq' },
   ];
 
-  const categories = [
-    { text: 'Fiction', path: '/categories/fiction' },
-    { text: 'Non-Fiction', path: '/categories/non-fiction' },
-    { text: 'Children', path: '/categories/children' },
-    { text: 'Academic', path: '/categories/academic' },
+  const genres = [
+    { text: 'Genres', path: '/products/genres' },
   ];
 
   const socialLinks = [
@@ -94,16 +89,16 @@ const Footer = () => {
             </FooterSection>
           </Grid>
 
-          {/* Categories */}
+          {/* Genres */}
           <Grid item xs={12} sm={6} md={2}>
             <FooterSection>
               <Typography variant="h6" gutterBottom sx={{ fontFamily: 'Playfair Display, serif' }}>
-                Categories
+                Genres
               </Typography>
-              {categories.map((category) => (
-                <Box key={category.path} mb={1}>
-                  <FooterLink component={Link} to={category.path}>
-                    {category.text}
+              {genres.map((genre) => (
+                <Box key={genre.path} mb={1}>
+                  <FooterLink component={Link} to={genre.path}>
+                    {genre.text}
                   </FooterLink>
                 </Box>
               ))}

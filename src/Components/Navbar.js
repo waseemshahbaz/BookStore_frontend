@@ -143,7 +143,6 @@ const Navbar = () => {
         onClose={handleMenuClose}
       >
         <MenuItem onClick={() => handleNavigation('/')}>Home</MenuItem>
-        <MenuItem onClick={() => handleNavigation('/shop')}>Shop Now</MenuItem>
         <MenuItem onClick={() => handleNavigation('/about')}>About Us</MenuItem>
         <MenuItem onClick={() => handleNavigation('/contact')}>Contact</MenuItem>
         {localStorage.getItem('token') && (
@@ -155,25 +154,11 @@ const Navbar = () => {
 
   const renderDesktopMenu = () => (
     <>
-      <NavButton onClick={() => handleNavigation('/')}>
-        Home
-      </NavButton>
-      <NavButton onClick={() => handleNavigation('/shop')}>
-        Shop Now
-      </NavButton>
-      <NavButton onClick={() => handleNavigation('/about')}>
-        About Us
-      </NavButton>
-      <NavButton onClick={() => handleNavigation('/contact')}>
-        Contact
-      </NavButton>
+      <NavButton onClick={() => handleNavigation('/')}>Home</NavButton>
+      <NavButton onClick={() => handleNavigation('/about')}>About Us</NavButton>
+      <NavButton onClick={() => handleNavigation('/contact')}>Contact</NavButton>
       {localStorage.getItem('token') && (
         <>
-          <IconButton color="inherit" onClick={() => handleNavigation('/cart')}>
-            <Badge badgeContent={4} color="error">
-              <FontAwesomeIcon icon={faShoppingCart} />
-            </Badge>
-          </IconButton>
           <IconButton color="inherit" onClick={() => handleNavigation('/profile')}>
             <FontAwesomeIcon icon={faUser} />
           </IconButton>
@@ -198,19 +183,6 @@ const Navbar = () => {
           </Typography>
         </LogoWrapper>
 
-        {!isMobile && (
-          <Search>
-            <SearchIconWrapper>
-              <FontAwesomeIcon icon={faSearch} />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search books..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyPress={handleSearch}
-            />
-          </Search>
-        )}
 
         <Box sx={{ flexGrow: 1 }} />
         

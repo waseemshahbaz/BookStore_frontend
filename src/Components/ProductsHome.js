@@ -4,13 +4,13 @@ import {
   Box, 
   Container, 
   TextField, 
-  IconButton, 
   Typography, 
   Grid,
   Fade,
   InputAdornment,
   Fab,
-  useTheme
+  useTheme,
+  Pagination
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,7 +19,6 @@ import {
   faPlus,
   faBookOpen 
 } from '@fortawesome/free-solid-svg-icons';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import { GET_API } from '../APIs/RestApis';
 import { GET_ALL_BOOKS } from '../COMMON/CONSTANTS';
 import Sidebar from './Sidebar';
@@ -27,12 +26,15 @@ import BookCover from './BookCover';
 import Loading from './Loading';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
-  marginLeft: 240, // Space for sidebar
+  marginLeft: 240,
   padding: theme.spacing(3),
-  marginTop: 64, // Space for navbar
+  marginTop: 64,
   minHeight: 'calc(100vh - 64px)',
   background: '#f5f5f5',
   position: 'relative',
+  width: '100%',
+  maxWidth: '100%',
+  boxSizing: 'border-box',
 }));
 
 const SearchContainer = styled(Box)(({ theme }) => ({
@@ -66,35 +68,33 @@ const NoResultsContainer = styled(Box)(({ theme }) => ({
   textAlign: 'center',
 }));
 
+const PaginationContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  padding: theme.spacing(4, 0),
+}));
+
 const ProductsHome = () => {
   const [books, setBooks] = useState([]);
   const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
-  const [size] = useState(12);
-  const [hasMore, setHasMore] = useState(true);
   const [searchString, setSearchString] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const theme = useTheme();
 
-  const fetchBooks = async () => {
-    if (books.length > 0 && page >= totalPages) {
-      setHasMore(false);
-      return;
-    }
-
+  const fetchBooks = async (pageNumber) => {
     setIsLoading(true);
     try {
       const result = await GET_API(GET_ALL_BOOKS, {
         params: {
-          page,
-          size,
+          page: pageNumber,
+          size: 12,
           searchItem: searchString,
         },
       });
 
-      setBooks(prevBooks => [...prevBooks, ...result.content]);
+      setBooks(result.content);
       setTotalPages(result.totalPages);
-      setHasMore(page < result.totalPages - 1);
     } catch (err) {
       console.error('Error fetching books:', err);
     } finally {
@@ -103,37 +103,26 @@ const ProductsHome = () => {
   };
 
   useEffect(() => {
-    setBooks([]);
-    setPage(0);
-    setHasMore(true);
-    fetchBooks();
+    fetchBooks(0);
   }, [searchString]);
 
   const handleSearchInput = (event) => {
     const value = event.target.value;
     if (value.length >= 2 || value.length === 0) {
-      setBooks([]);
-      setHasMore(true);
       setSearchString(value);
     }
   };
 
-  const loadMore = () => {
-    if (!isLoading) {
-      setPage(prevPage => prevPage + 1);
-    }
+  const handlePageChange = (event, newPage) => {
+    const pageIndex = newPage - 1; // Convert to 0-based index
+    setPage(pageIndex);
+    fetchBooks(pageIndex);
   };
-
-  useEffect(() => {
-    if (page > 0) {
-      fetchBooks();
-    }
-  }, [page]);
 
   return (
     <Box display="flex">
       <Sidebar />
-      <StyledContainer>
+      <StyledContainer maxWidth={false}>
         <SearchContainer>
           <TextField
             fullWidth
@@ -161,6 +150,7 @@ const ProductsHome = () => {
         <Fade in={true} timeout={1000}>
           <Box>
             {books.length > 0 ? (
+              <>
                 <Grid container spacing={3}>
                   {books.map((book, index) => (
                     <Grid item xs={12} sm={6} md={4} lg={3} key={book.id || index}>
@@ -168,6 +158,18 @@ const ProductsHome = () => {
                     </Grid>
                   ))}
                 </Grid>
+                <PaginationContainer>
+                  <Pagination
+                    count={totalPages}
+                    page={page + 1}
+                    onChange={handlePageChange}
+                    color="primary"
+                    size="large"
+                    showFirstButton
+                    showLastButton
+                  />
+                </PaginationContainer>
+              </>
             ) : !isLoading ? (
               <NoResultsContainer>
                 <FontAwesomeIcon 

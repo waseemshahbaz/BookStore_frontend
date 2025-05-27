@@ -7,3 +7,5 @@ export const GET_ALL_AUTHORS = '/authors/';
 export const GET_ALL_GENRES = '/genres/';
 export const UPDATE_BOOK = '/books/update/';
 export const SAVE_BOOK = '/books/save';
+export const GET_PAGINATED_GENRES = '/genres/paginated';
+export const GET_PAGINATED_AUTHORS = '/authors/paginated';
