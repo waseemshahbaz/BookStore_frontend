@@ -5,6 +5,8 @@ import axios from 'axios';
 import { styled } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { POST_API } from '../APIs/RestApis';
+import { BASE_URL } from '../COMMON/CONSTANTS';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
     background: `linear-gradient(135deg, ${theme.palette.background.default} 0%, #FFFFFF 100%)`,
@@ -60,7 +62,7 @@ const Signup = () => {
 
         try {
             const { confirmPassword, ...registerData } = formData;
-            const response = await axios.post('http://localhost:8081/api/v1/auth/register', registerData);
+            const response = await axios.post(BASE_URL + '/api/v1/auth/register', registerData);
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
                 navigate('/');
