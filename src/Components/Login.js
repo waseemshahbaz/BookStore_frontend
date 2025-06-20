@@ -126,7 +126,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/v1/auth/authenticate', formData, {
+      const response = await axios.post('http://localhost:8081/api/v1/auth/authenticate', formData, {
         headers: {
           'Content-Type': 'application/json',
         },

@@ -61,7 +61,7 @@ const Signup = () => {
 
         try {
             const { confirmPassword, ...registerData } = formData;
-            const response = await axios.post('/api/v1/auth/register', registerData);
+            const response = await axios.post('http://localhost:8081/api/v1/auth/register', registerData);
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
                 navigate('/');
