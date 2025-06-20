@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { BASE_URL } from '../COMMON/CONSTANTS';
 
 export async function GET_API(END_POINT, params) {
   const response = await axios.get(END_POINT, params);

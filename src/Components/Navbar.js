@@ -25,6 +25,7 @@ import {
   faBars
 } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import { POST_API } from '../APIs/RestApis';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   background: 'linear-gradient(to right, #2C3E50, #3E5151)',
@@ -95,7 +96,7 @@ const Navbar = () => {
 
   const handleSignOut = async () => {
     try {
-      await axios.post('http://localhost:8081/api/v1/auth/signout', {}, {
+      await axios.post('/api/v1/auth/signout', {}, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -143,6 +144,7 @@ const Navbar = () => {
         onClose={handleMenuClose}
       >
         <MenuItem onClick={() => handleNavigation('/')}>Home</MenuItem>
+        <MenuItem onClick={() => handleNavigation('/featured')}>Featured Books</MenuItem>
         <MenuItem onClick={() => handleNavigation('/about')}>About Us</MenuItem>
         <MenuItem onClick={() => handleNavigation('/contact')}>Contact</MenuItem>
         {localStorage.getItem('token') && (
@@ -155,6 +157,7 @@ const Navbar = () => {
   const renderDesktopMenu = () => (
     <>
       <NavButton onClick={() => handleNavigation('/')}>Home</NavButton>
+      <NavButton onClick={() => handleNavigation('/featured')}>Featured Books</NavButton>
       <NavButton onClick={() => handleNavigation('/about')}>About Us</NavButton>
       <NavButton onClick={() => handleNavigation('/contact')}>Contact</NavButton>
       {localStorage.getItem('token') && (

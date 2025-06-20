@@ -86,15 +86,15 @@ const ProductsHome = () => {
     setIsLoading(true);
     try {
       const result = await GET_API(GET_ALL_BOOKS, {
-        params: {
+      params: {
           page: pageNumber,
           size: 12,
-          searchItem: searchString,
-        },
+        searchItem: searchString,
+      },
       });
 
       setBooks(result.content);
-      setTotalPages(result.totalPages);
+        setTotalPages(result.totalPages);
     } catch (err) {
       console.error('Error fetching books:', err);
     } finally {
@@ -128,7 +128,7 @@ const ProductsHome = () => {
             fullWidth
             variant="outlined"
             placeholder="Search books by title, author, or ISBN..."
-            onChange={handleSearchInput}
+                  onChange={handleSearchInput}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -187,9 +187,9 @@ const ProductsHome = () => {
                   Try adjusting your search or browse our collection
                 </Typography>
               </NoResultsContainer>
-            ) : (
-              <Loading />
-            )}
+        ) : (
+          <Loading />
+        )}
           </Box>
         </Fade>
 
