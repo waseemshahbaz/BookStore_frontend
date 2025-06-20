@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:8081';
+export const BASE_URL = 'https://e9c0-38-7-184-250.ngrok-free.app';
 export const GET_ALL_BOOKS = '/books/';
 export const GET_ALL_BOOK_COVERS = '/books/bookCovers';
 export const GET_BOOK = '/books/';
