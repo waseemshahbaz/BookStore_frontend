@@ -26,7 +26,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { POST_API } from '../APIs/RestApis';
-import { BASE_URL } from '../COMMON/CONSTANTS';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   background: 'linear-gradient(to right, #2C3E50, #3E5151)',
@@ -97,7 +96,7 @@ const Navbar = () => {
 
   const handleSignOut = async () => {
     try {
-      await axios.post(BASE_URL + '/api/v1/auth/signout', {}, {
+      await axios.post('/api/v1/auth/signout', {}, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }

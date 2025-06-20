@@ -24,7 +24,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { POST_API } from '../APIs/RestApis';
-import { BASE_URL } from '../COMMON/CONSTANTS';
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   background: '#ffffff',
@@ -127,7 +126,11 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await POST_API(BASE_URL + '/api/v1/auth/authenticate', formData);
+      const response = await axios.post('/api/v1/auth/authenticate', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
         navigate('/');
