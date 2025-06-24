@@ -15,7 +15,9 @@
   margin: 20px;
   background-color: #ffffff;
   height: 800px;
-  width: 1500px;
+  padding-left: 14%;
+  padding-right: 14%;
+  width: 70vw;
 }
 
 .book-cover-container {

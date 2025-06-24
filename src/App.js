@@ -13,6 +13,7 @@ import GenresHome from './Components/GenresHome';
 import AuthorsHome from './Components/AuthorsHome';
 import AboutUs from './Components/AboutUs';
 import Contact from './Components/Contact';
+import FeaturedBooks from './Components/FeaturedBooks';
 
 const MainLayout = ({ children }) => (
   <>
@@ -73,6 +74,13 @@ function App() {
         <ProtectedRoute>
           <MainLayout>
             <AuthorsHome />
+          </MainLayout>
+        </ProtectedRoute>
+      } />
+      <Route path="/products/featured" element={
+        <ProtectedRoute>
+          <MainLayout>
+            <FeaturedBooks />
           </MainLayout>
         </ProtectedRoute>
       } />

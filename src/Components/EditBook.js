@@ -143,8 +143,8 @@ const EditBook = ({ bookProps, setEditCheck, addBook }) => {
       <div className="book-cover-container">
         <img
           className="book-cover-photo"
-          src={cover ? URL.createObjectURL(cover) : book?.coverImageURL}
-          alt={book?.title}
+          src={cover ? URL.createObjectURL(cover) :  book?.secondaryImageURL ||  book?.coverImageURL}
+          //alt={book?.title}
         />
         <Button
           variant="contained"

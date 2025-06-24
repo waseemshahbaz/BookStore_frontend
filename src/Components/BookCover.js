@@ -67,7 +67,7 @@ const BookCover = ({ book }) => {
           variant="filled"
         />
         <BookImage
-          image={book.coverImageURL}
+          image={ book.secondaryImageURL || book.coverImageURL }
           title={book.title}
         />
       </Box>

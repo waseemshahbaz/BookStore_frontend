@@ -144,7 +144,7 @@ const Navbar = () => {
         onClose={handleMenuClose}
       >
         <MenuItem onClick={() => handleNavigation('/')}>Home</MenuItem>
-        <MenuItem onClick={() => handleNavigation('/featured')}>Featured Books</MenuItem>
+        <MenuItem onClick={() => handleNavigation('/products/featured')}>Featured Books</MenuItem>
         <MenuItem onClick={() => handleNavigation('/about')}>About Us</MenuItem>
         <MenuItem onClick={() => handleNavigation('/contact')}>Contact</MenuItem>
         {localStorage.getItem('token') && (
@@ -157,7 +157,7 @@ const Navbar = () => {
   const renderDesktopMenu = () => (
     <>
       <NavButton onClick={() => handleNavigation('/')}>Home</NavButton>
-      <NavButton onClick={() => handleNavigation('/featured')}>Featured Books</NavButton>
+      <NavButton onClick={() => handleNavigation('/products/featured')}>Featured Books</NavButton>
       <NavButton onClick={() => handleNavigation('/about')}>About Us</NavButton>
       <NavButton onClick={() => handleNavigation('/contact')}>Contact</NavButton>
       {localStorage.getItem('token') && (

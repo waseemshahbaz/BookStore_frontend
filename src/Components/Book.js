@@ -45,6 +45,10 @@ const StyledContainer = styled(Container)(({ theme }) => ({
   marginTop: 64, // Space for navbar
   minHeight: 'calc(100vh - 64px)',
   background: '#f5f5f5',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'flex-start',
+  minWidth: 'calc(100vw - 240px)',
 }));
 
 const BookCover = styled('img')({
@@ -125,10 +129,10 @@ const Book = (props) => {
       <Sidebar />
       <Fade in={true} timeout={1000}>
         <StyledContainer>
-          <Grid container spacing={4}>
+          <Grid container spacing={4} sx={{ maxWidth: '1400px', mt: 4 }}>
             {/* Book Cover */}
             <Grid item xs={12} md={4}>
-              <BookCover src={book.coverImageURL} alt={book.title} />
+              <BookCover src={ book.secondaryImageURL || book.coverImageURL}/>
             </Grid>
 
             {/* Book Information */}
