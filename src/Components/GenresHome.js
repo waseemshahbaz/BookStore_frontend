@@ -104,6 +104,10 @@ const GenresHome = () => {
     setIsLoading(true);
     try {
       const result = await GET_API(GET_PAGINATED_GENRES, {
+          headers: {
+            "ngrok-skip-browser-warning": "1"
+          },
+        
         params: {
           page: pageNumber,
           size: 12,

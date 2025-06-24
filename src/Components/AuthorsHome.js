@@ -120,6 +120,9 @@ const AuthorsHome = () => {
     setIsLoading(true);
     try {
       const result = await GET_API(GET_PAGINATED_AUTHORS, {
+        headers: {
+          "ngrok-skip-browser-warning": "1"
+        },
         params: {
           page: pageNumber,
           size: 12,

@@ -49,7 +49,11 @@ const EditBook = ({ bookProps, setEditCheck, addBook }) => {
     book?.ratings?.length;
 
   useEffect(() => {
-    GET_API(GET_ALL_AUTHORS)
+    GET_API(GET_ALL_AUTHORS, {
+      headers: {
+        "ngrok-skip-browser-warning": "1"
+      },
+    })
       .then((result) => {
         setAuthors(result);
       })
@@ -57,7 +61,11 @@ const EditBook = ({ bookProps, setEditCheck, addBook }) => {
   }, []);
 
   useEffect(() => {
-    GET_API(GET_ALL_GENRES)
+    GET_API(GET_ALL_GENRES, {
+      headers: {
+        "ngrok-skip-browser-warning": "1"
+      },
+    })
       .then((result) => {
         setGenreNames(
           result.map((genre) => ({ value: genre.name, label: genre.name }))

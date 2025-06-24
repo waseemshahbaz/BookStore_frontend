@@ -86,15 +86,20 @@ const ProductsHome = () => {
     setIsLoading(true);
     try {
       const result = await GET_API(GET_ALL_BOOKS, {
+        headers: {
+          "ngrok-skip-browser-warning": "1"
+        },
       params: {
           page: pageNumber,
           size: 12,
         searchItem: searchString,
+        
       },
       });
 
+      console.log("result is here: ", result)
       setBooks(result.content);
-        setTotalPages(result.totalPages);
+      setTotalPages(result.totalPages);
     } catch (err) {
       console.error('Error fetching books:', err);
     } finally {

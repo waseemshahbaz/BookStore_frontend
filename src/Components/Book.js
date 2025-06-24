@@ -92,7 +92,11 @@ const Book = (props) => {
 
   useEffect(() => {
     if (!addBook) {
-      GET_API(GET_BOOK + id)
+      GET_API(GET_BOOK + id, {
+        headers: {
+          "ngrok-skip-browser-warning": "1"
+        },
+      })
         .then((data) => {
           setBook(data);
         })
